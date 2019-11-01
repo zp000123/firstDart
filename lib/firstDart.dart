@@ -107,3 +107,11 @@ Future<void> createDescriptions(Iterable<String> objects) async {
     }
   }
 }
+// you can also use async*, which gives you a nice readable way to build streams.
+Stream<String> report(Spacecraft craft, Iterable<String> objects) async*{
+  for(var object in objects) {
+    await Future.delayed(oneSecond);
+    yield '${craft.name} flies by $object';
+  }
+}
+
